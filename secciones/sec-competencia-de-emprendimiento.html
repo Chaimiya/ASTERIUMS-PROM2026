@@ -1,0 +1,74 @@
+<!-- Competencia De Emprendimiento (2 páginas) -->
+<style>
+  #sec-competencia-de-emprendimiento .vs, #sec-competencia-de-emprendimiento-2 .vs { position: relative; display: flex; gap: 8px; min-height: 0; height: var(--vs-h, auto); }
+  #sec-competencia-de-emprendimiento .vs--l, #sec-competencia-de-emprendimiento-2 .vs--l { flex-direction: row-reverse; }
+  #sec-competencia-de-emprendimiento .vs-view, #sec-competencia-de-emprendimiento-2 .vs-view { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--mag-radius-m); background: var(--ph-bg); touch-action: none; cursor: grab; -webkit-tap-highlight-color: transparent; }
+  #sec-competencia-de-emprendimiento .vs-view.drag, #sec-competencia-de-emprendimiento-2 .vs-view.drag { cursor: grabbing; }
+  #sec-competencia-de-emprendimiento .vs-view:focus-visible, #sec-competencia-de-emprendimiento-2 .vs-view:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-competencia-de-emprendimiento .vs-track, #sec-competencia-de-emprendimiento-2 .vs-track { position: absolute; inset: 0; transition: transform 520ms var(--mag-ease); will-change: transform; }
+  #sec-competencia-de-emprendimiento .vs-track.drag, #sec-competencia-de-emprendimiento-2 .vs-track.drag { transition: none; }
+  #sec-competencia-de-emprendimiento .vs-slide, #sec-competencia-de-emprendimiento-2 .vs-slide { position: relative; width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ph-bg); }
+  #sec-competencia-de-emprendimiento .vs-slide img, #sec-competencia-de-emprendimiento-2 .vs-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
+  #sec-competencia-de-emprendimiento .vs-slide video, #sec-competencia-de-emprendimiento-2 .vs-slide video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--mag-indigo); }
+  #sec-competencia-de-emprendimiento .vs-count, #sec-competencia-de-emprendimiento-2 .vs-count { position: absolute; z-index: 2; left: 10px; top: 10px; margin: 0; padding: 3px 10px; border-radius: var(--mag-radius-pill); background: color-mix(in srgb, var(--mag-indigo) 80%, transparent); color: var(--mag-luz); font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; pointer-events: none; }
+  #sec-competencia-de-emprendimiento .vs-thumbs, #sec-competencia-de-emprendimiento-2 .vs-thumbs { flex: 0 0 var(--vs-tw, 60px); width: var(--vs-tw, 60px); position: relative; overflow: hidden; padding: 4px; touch-action: none; cursor: grab; }
+  #sec-competencia-de-emprendimiento .vs-thumbs.drag, #sec-competencia-de-emprendimiento-2 .vs-thumbs.drag { cursor: grabbing; }
+  #sec-competencia-de-emprendimiento .vs-thumbs-in, #sec-competencia-de-emprendimiento-2 .vs-thumbs-in { display: flex; flex-direction: column; gap: 6px; transition: transform 420ms var(--mag-ease); }
+  #sec-competencia-de-emprendimiento .vs-thumbs.drag .vs-thumbs-in, #sec-competencia-de-emprendimiento-2 .vs-thumbs.drag .vs-thumbs-in { transition: none; }
+  #sec-competencia-de-emprendimiento .vs-th, #sec-competencia-de-emprendimiento-2 .vs-th { position: relative; flex: none; width: 100%; aspect-ratio: 1 / 1; padding: 0; border: 0; border-radius: var(--mag-radius-s); overflow: hidden; background: var(--ph-bg); cursor: pointer; opacity: .62; transition: opacity var(--mag-dur) var(--mag-ease); }
+  #sec-competencia-de-emprendimiento .vs-th img, #sec-competencia-de-emprendimiento-2 .vs-th img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  #sec-competencia-de-emprendimiento .vs-th:hover, #sec-competencia-de-emprendimiento-2 .vs-th:hover { opacity: 1; }
+  #sec-competencia-de-emprendimiento .vs-th.on, #sec-competencia-de-emprendimiento-2 .vs-th.on { opacity: 1; }
+  #sec-competencia-de-emprendimiento .vs-th.on::after, #sec-competencia-de-emprendimiento-2 .vs-th.on::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--mag-indigo); border-radius: inherit; outline: 2px solid var(--mag-luz); outline-offset: -4px; pointer-events: none; }
+  #sec-competencia-de-emprendimiento .vs-th:focus-visible, #sec-competencia-de-emprendimiento-2 .vs-th:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-competencia-de-emprendimiento .vs-pl, #sec-competencia-de-emprendimiento-2 .vs-pl { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; }
+  #sec-competencia-de-emprendimiento .vs-pl circle, #sec-competencia-de-emprendimiento-2 .vs-pl circle { fill: color-mix(in srgb, var(--mag-indigo) 80%, transparent); }
+  #sec-competencia-de-emprendimiento .vs-pl path, #sec-competencia-de-emprendimiento-2 .vs-pl path { fill: var(--mag-luz); }
+  @media (prefers-reduced-motion: reduce) { #sec-competencia-de-emprendimiento .vs-track, #sec-competencia-de-emprendimiento-2 .vs-track, #sec-competencia-de-emprendimiento .vs-thumbs-in, #sec-competencia-de-emprendimiento-2 .vs-thumbs-in, #sec-competencia-de-emprendimiento .vs-th, #sec-competencia-de-emprendimiento-2 .vs-th { transition: none; } }
+  #sec-competencia-de-emprendimiento .vs, #sec-competencia-de-emprendimiento-2 .vs { --vs-h: 178px; --vs-tw: 56px; }
+</style>
+
+<section class="pg pg--lavanda" id="sec-competencia-de-emprendimiento" data-label="Competencia De Emprendimiento" data-chapter="sec-competencia-de-emprendimiento" data-ch="sec-competencia-de-emprendimiento" aria-label="Competencia De Emprendimiento, página 1 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="pg-title" data-rv>Competencia De Emprendimiento</h2>
+    <p class="pg-note" data-rv style="--d:1"><span>Ideas de negocio frente al público</span><span>Desliza la foto o toca las miniaturas.</span></p>
+    <p class="pg-lead" data-rv style="--d:2">Equipos de la promoción subieron al estrado a presentar sus ideas de negocio, con el auditorio entero escuchando.</p>
+    <div class="pg-body" data-rv style="--d:3"><p>Con el micrófono en la mano y la estrella de La Salle detrás, aprendimos que emprender también es saber contarlo.</p></div>
+    <div class="vs vs--l" data-vs role="region" aria-roledescription="carousel" aria-label="Competencia De Emprendimiento" data-rv style="--d:4">
+      <div class="vs-view" tabindex="0" aria-label="Competencia De Emprendimiento: flechas arriba y abajo para cambiar de foto">
+        <div class="vs-track">
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="1 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-01.jpg" alt="Competencia De Emprendimiento, foto 1 de 7" width="1500" height="1000" loading="eager" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="2 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-02.jpg" alt="Competencia De Emprendimiento, foto 2 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="3 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-04.jpg" alt="Competencia De Emprendimiento, foto 3 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="4 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-05.jpg" alt="Competencia De Emprendimiento, foto 4 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="5 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-06.jpg" alt="Competencia De Emprendimiento, foto 5 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="6 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-07.jpg" alt="Competencia De Emprendimiento, foto 6 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="7 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-08.jpg" alt="Competencia De Emprendimiento, foto 7 de 7" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <p class="vs-count" aria-hidden="true"></p>
+      </div>
+      <div class="vs-thumbs">
+        <div class="vs-thumbs-in">
+        <button type="button" class="vs-th" aria-label="Ver foto 1 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-01-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 2 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-02-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 3 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-04-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 4 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-05-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 5 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-06-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 6 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-07-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 7 de 7"><img src="img/sec-competencia-de-emprendimiento/ce-08-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        </div>
+      </div>
+      <span class="sr" aria-live="polite"></span>
+    </div>
+    <p class="pg-num pg-num--l"></p>
+  </div></div>
+</section>
+
+<section class="pg pg--lavanda" id="sec-competencia-de-emprendimiento-2" data-label="Competencia De Emprendimiento" data-ch="sec-competencia-de-emprendimiento" aria-label="Competencia De Emprendimiento, página 2 de 2">
+  <div class="pg__in">
+    <h2 class="sr">Competencia De Emprendimiento, página 2 de 2</h2>
+    <figure class="pg-bleed" data-rv><div class="pg-media"><img src="img/sec-competencia-de-emprendimiento/ce-03.jpg" alt="Competencia De Emprendimiento" width="1500" height="1000" decoding="async" draggable="false" style="object-position:38% 40%"></div></figure>
+    <p class="pg-num pg-num--r pg-num--luz"></p>
+  </div>
+</section>
+<!-- END sec-competencia-de-emprendimiento -->

@@ -1,0 +1,181 @@
+<!-- Ciudades Inteligentes (2 páginas) -->
+<style>
+  /* ---------- p1 · texto ---------- */
+  #sec-ciudades-inteligentes .ci-essay { margin: 0; }
+  #sec-ciudades-inteligentes .ci-close { font-size: 14px; line-height: 1.6; }
+  #sec-ciudades-inteligentes .ci-foot { margin-top: auto; margin-bottom: 34px; display: flex; gap: 10px; align-items: center; }
+  #sec-ciudades-inteligentes .ci-foot .pg-star { flex: none; width: 30px; height: 30px; background: var(--mag-ultramar); }
+  /* ---------- p2 · capítulos con video, al ritmo del desplazamiento ---------- */
+  #sec-ciudades-inteligentes-2 .ci-scroll { position: absolute; inset: 0; overflow-x: hidden; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; touch-action: pan-y; scrollbar-width: none; outline: none; }
+  #sec-ciudades-inteligentes-2 .ci-scroll::-webkit-scrollbar { display: none; }
+  #sec-ciudades-inteligentes-2 .ci-scroll:focus-visible { box-shadow: inset 0 0 0 2px var(--mag-luz); }
+  #sec-ciudades-inteligentes-2 .ci-track { position: relative; height: calc(var(--n) * 560px); }
+  #sec-ciudades-inteligentes-2 .ci-sticky { position: sticky; top: 0; height: 560px; overflow: hidden; background: var(--mag-indigo); }
+  #sec-ciudades-inteligentes-2 .ci-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity var(--mag-dur-enter) var(--mag-ease); }
+  #sec-ciudades-inteligentes-2 .ci-vid.is-on { opacity: 1; }
+  #sec-ciudades-inteligentes-2 .ci-dim { position: absolute; inset: 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--mag-indigo) 50%, transparent), color-mix(in srgb, var(--mag-indigo) 72%, transparent)); }
+  #sec-ciudades-inteligentes-2 .ci-grain { position: absolute; inset: 0; opacity: 0.07; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; }
+  #sec-ciudades-inteligentes-2 .ci-snaps { position: absolute; inset: 0; pointer-events: none; }
+  #sec-ciudades-inteligentes-2 .ci-snaps i { position: absolute; left: 0; top: calc(var(--i) * 560px); width: 1px; height: 560px; scroll-snap-align: start; scroll-snap-stop: always; }
+  #sec-ciudades-inteligentes-2 .ci-chs { position: absolute; inset: 0; pointer-events: none; }
+  #sec-ciudades-inteligentes-2 .ci-ch { position: absolute; left: 0; right: 0; top: calc(var(--i) * 560px); height: 560px; display: flex; align-items: center; padding: 36px 32px 104px; }
+  #sec-ciudades-inteligentes-2 .ci-in { width: 100%; pointer-events: auto; color: var(--mag-luz); }
+  #sec-ciudades-inteligentes-2 .ci-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  #sec-ciudades-inteligentes-2 .ci-bar { width: 36px; height: 2px; background: var(--mag-menta); }
+  #sec-ciudades-inteligentes-2 .ci-cap { font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mag-menta); }
+  #sec-ciudades-inteligentes-2 .ci-mask { overflow: hidden; padding: 2px 0 6px; margin-bottom: 8px; }
+  #sec-ciudades-inteligentes-2 .ci-t { margin: 0; font-family: var(--mag-font-display); font-size: 33px; font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; }
+  #sec-ciudades-inteligentes-2 .ci-card { padding: 14px 16px; border-radius: var(--mag-radius-m); border: 1px solid color-mix(in srgb, var(--mag-luz) 18%, transparent); background: color-mix(in srgb, var(--mag-indigo) 66%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  #sec-ciudades-inteligentes-2 .ci-card p { margin: 0; font-size: 12.5px; line-height: 1.55; }
+  #sec-ciudades-inteligentes-2 .ci-card .ci-qh { font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mag-menta); margin-bottom: 8px; }
+  #sec-ciudades-inteligentes-2 .ci-q { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  #sec-ciudades-inteligentes-2 .ci-q li { position: relative; padding-left: 20px; font-size: 13px; line-height: 1.45; }
+  #sec-ciudades-inteligentes-2 .ci-q li::before { content: ""; position: absolute; left: 0; top: 0.28em; width: 11px; height: 11px; background: var(--mag-menta); -webkit-mask: var(--mag-star) center / contain no-repeat; mask: var(--mag-star) center / contain no-repeat; }
+  #sec-ciudades-inteligentes-2 .ci-qr { display: block; width: 64px; margin-top: 10px; border-radius: var(--mag-radius-m); overflow: hidden; background: var(--mag-luz); transition: transform var(--mag-dur) var(--mag-ease); }
+  #sec-ciudades-inteligentes-2 .ci-qr:hover { transform: scale(1.04); }
+  #sec-ciudades-inteligentes-2 .ci-qr img { display: block; width: 100%; height: auto; }
+  #sec-ciudades-inteligentes-2 .ci-qn { margin: 8px 0 0; font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 500; line-height: 1.5; letter-spacing: 0.01em; }
+  #sec-ciudades-inteligentes-2 .ci-btn { margin-top: 16px; display: inline-flex; align-items: center; gap: 12px; padding: 0; border: 0; background: none; color: var(--mag-luz); cursor: pointer; font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: transform var(--mag-dur) var(--mag-ease); }
+  #sec-ciudades-inteligentes-2 .ci-btn:hover { transform: translateX(6px); }
+  #sec-ciudades-inteligentes-2 .ci-btn:focus-visible { outline: 2px solid var(--mag-luz); outline-offset: 4px; border-radius: var(--mag-radius-pill); }
+  #sec-ciudades-inteligentes-2 .ci-circ { position: relative; width: 40px; height: 40px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--mag-luz) 50%, transparent); display: grid; place-items: center; overflow: hidden; transition: background var(--mag-dur) var(--mag-ease), color var(--mag-dur) var(--mag-ease); }
+  #sec-ciudades-inteligentes-2 .ci-circ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  #sec-ciudades-inteligentes-2 .ci-btn:hover .ci-circ { background: var(--mag-luz); color: var(--mag-indigo); }
+  /* entrada de cada capítulo: título que sube desde una máscara, el resto se desvanece */
+  .mag-js #sec-ciudades-inteligentes-2 .ci-head, .mag-js #sec-ciudades-inteligentes-2 .ci-card, .mag-js #sec-ciudades-inteligentes-2 .ci-qr, .mag-js #sec-ciudades-inteligentes-2 .ci-qn, .mag-js #sec-ciudades-inteligentes-2 .ci-btn { opacity: 0; }
+  .mag-js #sec-ciudades-inteligentes-2 .ci-t { transform: translateY(100%); opacity: 0; }
+  .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-t { transform: none; opacity: 1; transition: transform 800ms var(--mag-ease), opacity 800ms var(--mag-ease); transition-delay: 120ms; }
+  .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-head, .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-card, .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-qr, .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-qn, .mag-js #sec-ciudades-inteligentes-2.is-seen .ci-ch.is-on .ci-btn { opacity: 1; transition: opacity var(--mag-dur-enter) var(--mag-ease), transform var(--mag-dur) var(--mag-ease); transition-delay: 240ms; }
+  #sec-ciudades-inteligentes-2 .ci-ch:not(.is-on) .ci-btn { pointer-events: none; }
+  /* indicador de capítulo con anillo de avance */
+  #sec-ciudades-inteligentes-2 .ci-nav { position: absolute; z-index: 3; left: 50%; bottom: 40px; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; padding: 6px 6px 6px 20px; border-radius: var(--mag-radius-pill); border: 1px solid color-mix(in srgb, var(--mag-luz) 16%, transparent); background: color-mix(in srgb, var(--mag-indigo) 84%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--mag-luz); pointer-events: none; white-space: nowrap; }
+  #sec-ciudades-inteligentes-2 .ci-nl { display: grid; gap: 2px; min-width: 112px; }
+  #sec-ciudades-inteligentes-2 .ci-nl small { font-family: var(--mag-font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mag-menta); }
+  #sec-ciudades-inteligentes-2 .ci-nl b { font-family: var(--mag-font-display); font-size: 13px; font-weight: 700; line-height: 1.2; }
+  #sec-ciudades-inteligentes-2 .ci-ringbox { position: relative; width: 44px; height: 44px; display: grid; place-items: center; }
+  #sec-ciudades-inteligentes-2 .ci-ringbox svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); fill: none; stroke-width: 2; }
+  #sec-ciudades-inteligentes-2 .ci-ringbox .tr { stroke: color-mix(in srgb, var(--mag-luz) 16%, transparent); }
+  #sec-ciudades-inteligentes-2 .ci-ringbox .pr { stroke: var(--mag-menta); stroke-linecap: round; stroke-dasharray: 113.1; stroke-dashoffset: 113.1; transition: stroke-dashoffset 400ms var(--mag-ease); }
+  #sec-ciudades-inteligentes-2 .ci-ringbox i { width: 16px; height: 16px; background: var(--mag-luz); -webkit-mask: var(--mag-star) center / contain no-repeat; mask: var(--mag-star) center / contain no-repeat; }
+  #sec-ciudades-inteligentes-2 .ci-hint { position: absolute; z-index: 3; left: 32px; right: 32px; top: 26px; margin: 0; text-align: center; color: var(--mag-luz); pointer-events: none; transition: opacity var(--mag-dur-enter) var(--mag-ease); }
+  #sec-ciudades-inteligentes-2.is-scrolled .ci-hint { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    #sec-ciudades-inteligentes-2 .ci-vid, #sec-ciudades-inteligentes-2 .ci-btn, #sec-ciudades-inteligentes-2 .ci-circ, #sec-ciudades-inteligentes-2 .ci-qr, #sec-ciudades-inteligentes-2 .ci-ringbox .pr, #sec-ciudades-inteligentes-2 .ci-hint { transition: none; }
+    .mag-js #sec-ciudades-inteligentes-2 .ci-head, .mag-js #sec-ciudades-inteligentes-2 .ci-card, .mag-js #sec-ciudades-inteligentes-2 .ci-qr, .mag-js #sec-ciudades-inteligentes-2 .ci-qn, .mag-js #sec-ciudades-inteligentes-2 .ci-btn, .mag-js #sec-ciudades-inteligentes-2 .ci-t { opacity: 1; transform: none; }
+  }
+</style>
+
+<section class="pg pg--menta" id="sec-ciudades-inteligentes" data-label="Ciudades Inteligentes" data-chapter="sec-ciudades-inteligentes" data-ch="sec-ciudades-inteligentes" aria-label="Ciudades Inteligentes, página 1 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="pg-title" data-rv>Ciudades Inteligentes</h2>
+    <p class="pg-note" data-rv style="--d:1"><span>Tecnología, privacidad y democracia</span><span>en el espacio urbano</span></p>
+    <h3 class="pg-h2 ci-essay" data-rv style="--d:2">La ciudad inteligente y el contrato urbano en la era digital</h3>
+    <div class="pg-body ci-close" data-rv style="--d:3"><p>Una ciudad verdaderamente inteligente no es la que lo mide todo, sino la que sabe qué no necesita controlar. La tecnología debe fortalecer el bienestar colectivo sin convertir la vigilancia permanente en el precio de vivir en la ciudad. El reto no es elegir entre innovación y libertad, sino diseñar sistemas que protejan ambas.</p></div>
+    <div class="ci-foot" data-rv style="--d:4"><span class="pg-star" aria-hidden="true"></span><p class="pg-note"><span>Desliza hacia arriba en la página de al lado</span><span>para leer los cuatro capítulos.</span></p></div>
+    <p class="pg-num pg-num--l"></p>
+  </div></div>
+</section>
+
+<section class="pg pg--menta" id="sec-ciudades-inteligentes-2" data-label="Ciudades Inteligentes" data-ch="sec-ciudades-inteligentes" aria-label="Ciudades Inteligentes, página 2 de 2">
+  <div class="pg__in">
+    <h2 class="sr">Ciudades Inteligentes, página 2 de 2</h2>
+    <div class="ci-scroll" role="region" aria-label="Cuatro capítulos sobre la ciudad inteligente. Desliza hacia arriba o usa las flechas arriba y abajo para avanzar." tabindex="0">
+      <div class="ci-track" style="--n:4">
+        <div class="ci-sticky" aria-hidden="true"><video class="ci-vid is-on" src="video/sec-ciudades-inteligentes/cap-1-promesa.mp4" poster="video/sec-ciudades-inteligentes/cap-1.jpg" muted loop playsinline preload="auto" tabindex="-1" aria-hidden="true"></video><video class="ci-vid" src="video/sec-ciudades-inteligentes/cap-2-riesgo.mp4" poster="video/sec-ciudades-inteligentes/cap-2.jpg" muted loop playsinline preload="auto" tabindex="-1" aria-hidden="true"></video><video class="ci-vid" src="video/sec-ciudades-inteligentes/cap-3-contrato.mp4" poster="video/sec-ciudades-inteligentes/cap-3.jpg" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true"></video><video class="ci-vid" src="video/sec-ciudades-inteligentes/cap-4-preguntas.mp4" poster="video/sec-ciudades-inteligentes/cap-4.jpg" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true"></video><div class="ci-dim"></div><div class="ci-grain"></div></div>
+        <div class="ci-snaps" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i></div>
+        <div class="ci-chs">
+      <article class="ci-ch" style="--i:0" aria-label="Capítulo 01: La promesa">
+        <div class="ci-in">
+          <div class="ci-head"><span class="ci-bar"></span><span class="ci-cap">Capítulo 01</span></div>
+          <div class="ci-mask"><h3 class="ci-t">La promesa</h3></div>
+          <div class="ci-card"><p>Las ciudades inteligentes utilizan el Internet de las Cosas (IoT), la inteligencia artificial y sensores conectados para mejorar el transporte, la seguridad y la gestión de recursos. Los semáforos adaptativos, los sensores ambientales y los servicios automatizados pueden hacer que la vida urbana sea más eficiente y sostenible. Sin embargo, estas ventajas también plantean una pregunta esencial: ¿la tecnología sirve a las personas o convierte su vida cotidiana en datos que pueden vigilarse y analizarse?</p></div>
+          <button class="ci-btn" type="button" data-to="1"><span class="ci-circ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span><span class="ci-bl">Seguir leyendo</span></button>
+        </div>
+      </article>
+<article class="ci-ch" style="--i:1" aria-label="Capítulo 02: El riesgo">
+        <div class="ci-in">
+          <div class="ci-head"><span class="ci-bar"></span><span class="ci-cap">Capítulo 02</span></div>
+          <div class="ci-mask"><h3 class="ci-t">El riesgo</h3></div>
+          <div class="ci-card"><p>La vigilancia predictiva puede ayudar a identificar riesgos, pero sus resultados pueden reproducir sesgos presentes en los datos y afectar la presunción de inocencia. Además, saber que los desplazamientos y las actividades pueden quedar registrados puede limitar la libertad de expresión y reunión, incluso sin una prohibición explícita. La automatización también puede excluir a quienes carecen de acceso digital y crear dependencia de sistemas vulnerables a errores o ciberataques.</p></div>
+          <button class="ci-btn" type="button" data-to="2"><span class="ci-circ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span><span class="ci-bl">Seguir leyendo</span></button>
+        </div>
+      </article>
+<article class="ci-ch" style="--i:2" aria-label="Capítulo 03: Un nuevo contrato">
+        <div class="ci-in">
+          <div class="ci-head"><span class="ci-bar"></span><span class="ci-cap">Capítulo 03</span></div>
+          <div class="ci-mask"><h3 class="ci-t">Un nuevo contrato</h3></div>
+          <div class="ci-card"><p>Por eso, las ciudades necesitan un nuevo «contrato urbano» que establezca límites democráticos al uso de la tecnología. Este acuerdo debe incluir la minimización de datos, transparencia sobre los algoritmos, auditorías independientes, responsabilidad institucional, participación ciudadana y alternativas no digitales para acceder a los servicios públicos. La innovación debe evaluarse no solo por su rapidez o ahorro, sino también por sus efectos sobre los derechos y la igualdad.</p></div>
+          <button class="ci-btn" type="button" data-to="3"><span class="ci-circ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span><span class="ci-bl">Seguir leyendo</span></button>
+        </div>
+      </article>
+<article class="ci-ch" style="--i:3" aria-label="Capítulo 04: Para pensar">
+        <div class="ci-in">
+          <div class="ci-head"><span class="ci-bar"></span><span class="ci-cap">Capítulo 04</span></div>
+          <div class="ci-mask"><h3 class="ci-t">Para pensar</h3></div>
+          <div class="ci-card"><p class="ci-qh">Preguntas para reflexionar</p><ul class="ci-q"><li>¿Cómo equilibrar la seguridad pública y la privacidad?</li><li>¿Qué decisiones urbanas deberían requerir supervisión humana?</li><li>¿Cómo garantizar que los servicios digitales no excluyan a nadie?</li></ul></div><a class="ci-qr" href="https://www.fortinet.com/lat/resources/cyberglossary/iot" target="_blank" rel="noopener" aria-label="Abrir en una pestaña nueva una explicación sobre el Internet de las Cosas (IoT), de Fortinet"><img src="img/sec-ciudades-inteligentes/qr-iot.jpg" alt="Código QR que lleva a una explicación sobre el Internet de las Cosas (IoT)" width="292" height="292" loading="lazy" decoding="async"></a><p class="ci-qn">Para saber más sobre IoT, escanea el código.</p>
+          <button class="ci-btn" type="button" data-to="0"><span class="ci-circ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></span><span class="ci-bl">Volver al inicio</span></button>
+        </div>
+      </article>
+        </div>
+      </div>
+    </div>
+    <p class="pg-note ci-hint">Desliza hacia arriba</p>
+    <div class="ci-nav" aria-hidden="true">
+      <div class="ci-nl"><small class="ci-ncap">Capítulo 01</small><b class="ci-ntit">La promesa</b></div>
+      <div class="ci-ringbox"><svg viewBox="0 0 44 44"><circle class="tr" cx="22" cy="22" r="18"/><circle class="pr" cx="22" cy="22" r="18"/></svg><i></i></div>
+    </div>
+    <span class="sr ci-live" aria-live="polite"></span>
+    <p class="pg-num pg-num--r pg-num--luz"></p>
+  </div>
+</section>
+<script>
+(() => {
+  const P = document.getElementById('sec-ciudades-inteligentes-2');
+  if (!P || P.dataset.ready) return; P.dataset.ready = '1';
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TITLES = ["La promesa", "El riesgo", "Un nuevo contrato", "Para pensar"], H = 560, C = 113.1;
+  const sc = P.querySelector('.ci-scroll'), chs = [...P.querySelectorAll('.ci-ch')], vids = [...P.querySelectorAll('.ci-vid')];
+  const ncap = P.querySelector('.ci-ncap'), ntit = P.querySelector('.ci-ntit'), pr = P.querySelector('.ci-ringbox .pr'), live = P.querySelector('.ci-live');
+  const n = chs.length, pad = v => (v < 10 ? '0' : '') + v, clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const shown = () => {
+    if (document.hidden) return false;
+    const r = sc.getBoundingClientRect(); if (r.width < 2 || r.height < 2) return false;
+    const x = Math.min(innerWidth - 1, Math.max(0, r.left + r.width / 2)), y = Math.min(innerHeight - 1, Math.max(0, r.top + r.height * 0.4));
+    const el = document.elementFromPoint(x, y); return !!el && P.contains(el);
+  };
+  let act = -1, fadeEnd = 0;
+  function playing() {
+    const on = shown(), now = performance.now();
+    vids.forEach((v, k) => {
+      if (on && k === act) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      else if (!on || now > fadeEnd) v.pause();
+    });
+  }
+  function setAct(i) {
+    if (i === act) return; act = i;
+    chs.forEach((c, k) => { c.classList.toggle('is-on', k === i); const b = c.querySelector('.ci-btn'); if (b) b.tabIndex = k === i ? 0 : -1; });
+    vids.forEach((v, k) => v.classList.toggle('is-on', k === i));
+    ncap.textContent = 'Capítulo ' + pad(i + 1); ntit.textContent = TITLES[i];
+    live.textContent = 'Capítulo ' + (i + 1) + ' de ' + n + ': ' + TITLES[i];
+    fadeEnd = performance.now() + (RM ? 0 : 1300); playing();
+  }
+  function onScroll() {
+    const t = sc.scrollTop;
+    pr.style.strokeDashoffset = C * (1 - clamp(t / (H * (n - 1)), 0, 1));
+    if (t > 8) P.classList.add('is-scrolled');
+    setAct(clamp(Math.round(t / H), 0, n - 1));
+  }
+  const to = i => sc.scrollTo({ top: clamp(i, 0, n - 1) * H, behavior: RM ? 'auto' : 'smooth' });
+  sc.addEventListener('scroll', onScroll, { passive: true });
+  chs.forEach(c => c.querySelector('.ci-btn').addEventListener('click', e => to(+e.currentTarget.dataset.to)));
+  /* PageUp/PageDown/Inicio/Fin cambian de capítulo en vez de pasar la página del libro */
+  sc.addEventListener('keydown', e => {
+    const k = e.key, cur = clamp(Math.round(sc.scrollTop / H), 0, n - 1);
+    if (k === 'PageDown') to(cur + 1); else if (k === 'PageUp') to(cur - 1); else if (k === 'Home') to(0); else if (k === 'End') to(n - 1); else return;
+    e.preventDefault(); e.stopPropagation();
+  });
+  setInterval(playing, 400);
+  setAct(0); onScroll();
+})();
+</script>
+<!-- END sec-ciudades-inteligentes -->

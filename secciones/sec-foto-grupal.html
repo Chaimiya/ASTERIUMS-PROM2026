@@ -1,0 +1,75 @@
+<!-- Foto Grupal (2 páginas) -->
+<style>
+  #sec-foto-grupal .vs, #sec-foto-grupal-2 .vs { position: relative; display: flex; gap: 8px; min-height: 0; height: var(--vs-h, auto); }
+  #sec-foto-grupal .vs--l, #sec-foto-grupal-2 .vs--l { flex-direction: row-reverse; }
+  #sec-foto-grupal .vs-view, #sec-foto-grupal-2 .vs-view { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--mag-radius-m); background: var(--ph-bg); touch-action: none; cursor: grab; -webkit-tap-highlight-color: transparent; }
+  #sec-foto-grupal .vs-view.drag, #sec-foto-grupal-2 .vs-view.drag { cursor: grabbing; }
+  #sec-foto-grupal .vs-view:focus-visible, #sec-foto-grupal-2 .vs-view:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-foto-grupal .vs-track, #sec-foto-grupal-2 .vs-track { position: absolute; inset: 0; transition: transform 520ms var(--mag-ease); will-change: transform; }
+  #sec-foto-grupal .vs-track.drag, #sec-foto-grupal-2 .vs-track.drag { transition: none; }
+  #sec-foto-grupal .vs-slide, #sec-foto-grupal-2 .vs-slide { position: relative; width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ph-bg); }
+  #sec-foto-grupal .vs-slide img, #sec-foto-grupal-2 .vs-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
+  #sec-foto-grupal .vs-slide video, #sec-foto-grupal-2 .vs-slide video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--mag-indigo); }
+  #sec-foto-grupal .vs-count, #sec-foto-grupal-2 .vs-count { position: absolute; z-index: 2; left: 10px; top: 10px; margin: 0; padding: 3px 10px; border-radius: var(--mag-radius-pill); background: color-mix(in srgb, var(--mag-indigo) 80%, transparent); color: var(--mag-luz); font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; pointer-events: none; }
+  #sec-foto-grupal .vs-thumbs, #sec-foto-grupal-2 .vs-thumbs { flex: 0 0 var(--vs-tw, 60px); width: var(--vs-tw, 60px); position: relative; overflow: hidden; padding: 4px; touch-action: none; cursor: grab; }
+  #sec-foto-grupal .vs-thumbs.drag, #sec-foto-grupal-2 .vs-thumbs.drag { cursor: grabbing; }
+  #sec-foto-grupal .vs-thumbs-in, #sec-foto-grupal-2 .vs-thumbs-in { display: flex; flex-direction: column; gap: 6px; transition: transform 420ms var(--mag-ease); }
+  #sec-foto-grupal .vs-thumbs.drag .vs-thumbs-in, #sec-foto-grupal-2 .vs-thumbs.drag .vs-thumbs-in { transition: none; }
+  #sec-foto-grupal .vs-th, #sec-foto-grupal-2 .vs-th { position: relative; flex: none; width: 100%; aspect-ratio: 1 / 1; padding: 0; border: 0; border-radius: var(--mag-radius-s); overflow: hidden; background: var(--ph-bg); cursor: pointer; opacity: .62; transition: opacity var(--mag-dur) var(--mag-ease); }
+  #sec-foto-grupal .vs-th img, #sec-foto-grupal-2 .vs-th img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  #sec-foto-grupal .vs-th:hover, #sec-foto-grupal-2 .vs-th:hover { opacity: 1; }
+  #sec-foto-grupal .vs-th.on, #sec-foto-grupal-2 .vs-th.on { opacity: 1; }
+  #sec-foto-grupal .vs-th.on::after, #sec-foto-grupal-2 .vs-th.on::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--mag-indigo); border-radius: inherit; outline: 2px solid var(--mag-luz); outline-offset: -4px; pointer-events: none; }
+  #sec-foto-grupal .vs-th:focus-visible, #sec-foto-grupal-2 .vs-th:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-foto-grupal .vs-pl, #sec-foto-grupal-2 .vs-pl { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; }
+  #sec-foto-grupal .vs-pl circle, #sec-foto-grupal-2 .vs-pl circle { fill: color-mix(in srgb, var(--mag-indigo) 80%, transparent); }
+  #sec-foto-grupal .vs-pl path, #sec-foto-grupal-2 .vs-pl path { fill: var(--mag-luz); }
+  @media (prefers-reduced-motion: reduce) { #sec-foto-grupal .vs-track, #sec-foto-grupal-2 .vs-track, #sec-foto-grupal .vs-thumbs-in, #sec-foto-grupal-2 .vs-thumbs-in, #sec-foto-grupal .vs-th, #sec-foto-grupal-2 .vs-th { transition: none; } }
+  #sec-foto-grupal .ch-stars, #sec-foto-grupal-2 .ch-stars { display: flex; gap: 10px; align-items: center; margin-top: auto; margin-bottom: 34px; }
+  #sec-foto-grupal .ch-mid, #sec-foto-grupal-2 .ch-mid { justify-content: center; }
+  #sec-foto-grupal .vs, #sec-foto-grupal-2 .vs { --vs-h: 224px; --vs-tw: 60px; }
+</style>
+
+<section class="pg pg--lavanda" id="sec-foto-grupal" data-label="Foto Grupal" data-chapter="sec-foto-grupal" data-ch="sec-foto-grupal" aria-label="Foto Grupal, página 1 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="pg-title" data-rv>Foto Grupal</h2>
+    <p class="pg-note" data-rv style="--d:1"><span>Promoción 2026</span><span>Todos juntos</span></p>
+    <p class="pg-lead" data-rv style="--d:2">Togas, birretes y la promoción completa: por fin todos en una sola foto.</p>
+    <div class="pg-body" data-rv style="--d:3"><p>De pie, sentados en las gradas y con los birretes al aire: un último vistazo a la promoción antes de salir al mundo.</p></div>
+    <div class="ch-stars" aria-hidden="true"><span class="pg-star" style="width:30px;height:30px;background:var(--mag-ultramar)"></span><span class="pg-star" style="width:18px;height:18px;background:var(--mag-coral)"></span><span class="pg-star" style="width:12px;height:12px;background:var(--mag-menta)"></span></div>
+    <p class="pg-num pg-num--l"></p>
+  </div></div>
+</section>
+
+<section class="pg pg--lavanda" id="sec-foto-grupal-2" data-label="Foto Grupal" data-ch="sec-foto-grupal" aria-label="Foto Grupal, página 2 de 2">
+  <div class="pg__in"><div class="pg-pad ch-mid" style="gap:18px">
+    <h2 class="sr">Foto Grupal, página 2 de 2</h2>
+    <div class="vs" data-vs role="region" aria-roledescription="carousel" aria-label="Foto Grupal" data-rv style="--d:1">
+      <div class="vs-view" tabindex="0" aria-label="Foto Grupal: flechas arriba y abajo para cambiar de foto">
+        <div class="vs-track">
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="1 de 6"><img src="img/sec-foto-grupal/fg-01.jpg" alt="Foto Grupal, foto 1 de 6" width="1500" height="1000" loading="eager" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="2 de 6"><img src="img/sec-foto-grupal/fg-02.jpg" alt="Foto Grupal, foto 2 de 6" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="3 de 6"><img src="img/sec-foto-grupal/fg-03.jpg" alt="Foto Grupal, foto 3 de 6" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="4 de 6"><img src="img/sec-foto-grupal/fg-04.jpg" alt="Foto Grupal, foto 4 de 6" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="5 de 6"><img src="img/sec-foto-grupal/fg-05.jpg" alt="Foto Grupal, foto 5 de 6" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="6 de 6"><img src="img/sec-foto-grupal/fg-06.jpg" alt="Foto Grupal, foto 6 de 6" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <p class="vs-count" aria-hidden="true"></p>
+      </div>
+      <div class="vs-thumbs">
+        <div class="vs-thumbs-in">
+        <button type="button" class="vs-th" aria-label="Ver foto 1 de 6"><img src="img/sec-foto-grupal/fg-01-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 2 de 6"><img src="img/sec-foto-grupal/fg-02-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 3 de 6"><img src="img/sec-foto-grupal/fg-03-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 4 de 6"><img src="img/sec-foto-grupal/fg-04-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 5 de 6"><img src="img/sec-foto-grupal/fg-05-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 6 de 6"><img src="img/sec-foto-grupal/fg-06-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        </div>
+      </div>
+      <span class="sr" aria-live="polite"></span>
+    </div>
+    <p class="pg-note" data-rv style="--d:2"><span>Desliza la foto o toca las miniaturas.</span></p>
+    <p class="pg-num pg-num--r"></p>
+  </div></div>
+</section>
+<!-- END sec-foto-grupal -->

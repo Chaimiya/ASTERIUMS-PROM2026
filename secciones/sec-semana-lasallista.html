@@ -1,0 +1,97 @@
+<!-- Semana Lasallista (2 páginas) -->
+<style>
+  #sec-semana-lasallista .vs, #sec-semana-lasallista-2 .vs { position: relative; display: flex; gap: 8px; min-height: 0; height: var(--vs-h, auto); }
+  #sec-semana-lasallista .vs--l, #sec-semana-lasallista-2 .vs--l { flex-direction: row-reverse; }
+  #sec-semana-lasallista .vs-view, #sec-semana-lasallista-2 .vs-view { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--mag-radius-m); background: var(--ph-bg); touch-action: none; cursor: grab; -webkit-tap-highlight-color: transparent; }
+  #sec-semana-lasallista .vs-view.drag, #sec-semana-lasallista-2 .vs-view.drag { cursor: grabbing; }
+  #sec-semana-lasallista .vs-view:focus-visible, #sec-semana-lasallista-2 .vs-view:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-semana-lasallista .vs-track, #sec-semana-lasallista-2 .vs-track { position: absolute; inset: 0; transition: transform 520ms var(--mag-ease); will-change: transform; }
+  #sec-semana-lasallista .vs-track.drag, #sec-semana-lasallista-2 .vs-track.drag { transition: none; }
+  #sec-semana-lasallista .vs-slide, #sec-semana-lasallista-2 .vs-slide { position: relative; width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ph-bg); }
+  #sec-semana-lasallista .vs-slide img, #sec-semana-lasallista-2 .vs-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
+  #sec-semana-lasallista .vs-slide video, #sec-semana-lasallista-2 .vs-slide video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--mag-indigo); }
+  #sec-semana-lasallista .vs-count, #sec-semana-lasallista-2 .vs-count { position: absolute; z-index: 2; left: 10px; top: 10px; margin: 0; padding: 3px 10px; border-radius: var(--mag-radius-pill); background: color-mix(in srgb, var(--mag-indigo) 80%, transparent); color: var(--mag-luz); font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; pointer-events: none; }
+  #sec-semana-lasallista .vs-thumbs, #sec-semana-lasallista-2 .vs-thumbs { flex: 0 0 var(--vs-tw, 60px); width: var(--vs-tw, 60px); position: relative; overflow: hidden; padding: 4px; touch-action: none; cursor: grab; }
+  #sec-semana-lasallista .vs-thumbs.drag, #sec-semana-lasallista-2 .vs-thumbs.drag { cursor: grabbing; }
+  #sec-semana-lasallista .vs-thumbs-in, #sec-semana-lasallista-2 .vs-thumbs-in { display: flex; flex-direction: column; gap: 6px; transition: transform 420ms var(--mag-ease); }
+  #sec-semana-lasallista .vs-thumbs.drag .vs-thumbs-in, #sec-semana-lasallista-2 .vs-thumbs.drag .vs-thumbs-in { transition: none; }
+  #sec-semana-lasallista .vs-th, #sec-semana-lasallista-2 .vs-th { position: relative; flex: none; width: 100%; aspect-ratio: 1 / 1; padding: 0; border: 0; border-radius: var(--mag-radius-s); overflow: hidden; background: var(--ph-bg); cursor: pointer; opacity: .62; transition: opacity var(--mag-dur) var(--mag-ease); }
+  #sec-semana-lasallista .vs-th img, #sec-semana-lasallista-2 .vs-th img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  #sec-semana-lasallista .vs-th:hover, #sec-semana-lasallista-2 .vs-th:hover { opacity: 1; }
+  #sec-semana-lasallista .vs-th.on, #sec-semana-lasallista-2 .vs-th.on { opacity: 1; }
+  #sec-semana-lasallista .vs-th.on::after, #sec-semana-lasallista-2 .vs-th.on::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--mag-indigo); border-radius: inherit; outline: 2px solid var(--mag-luz); outline-offset: -4px; pointer-events: none; }
+  #sec-semana-lasallista .vs-th:focus-visible, #sec-semana-lasallista-2 .vs-th:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-semana-lasallista .vs-pl, #sec-semana-lasallista-2 .vs-pl { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; }
+  #sec-semana-lasallista .vs-pl circle, #sec-semana-lasallista-2 .vs-pl circle { fill: color-mix(in srgb, var(--mag-indigo) 80%, transparent); }
+  #sec-semana-lasallista .vs-pl path, #sec-semana-lasallista-2 .vs-pl path { fill: var(--mag-luz); }
+  @media (prefers-reduced-motion: reduce) { #sec-semana-lasallista .vs-track, #sec-semana-lasallista-2 .vs-track, #sec-semana-lasallista .vs-thumbs-in, #sec-semana-lasallista-2 .vs-thumbs-in, #sec-semana-lasallista .vs-th, #sec-semana-lasallista-2 .vs-th { transition: none; } }
+  #sec-semana-lasallista .ch-stars, #sec-semana-lasallista-2 .ch-stars { display: flex; gap: 10px; align-items: center; margin-top: auto; margin-bottom: 34px; }
+  #sec-semana-lasallista .vs, #sec-semana-lasallista-2 .vs { --vs-h: 468px; --vs-tw: 60px; }
+</style>
+
+<section class="pg pg--lavanda" id="sec-semana-lasallista" data-label="Semana Lasallista" data-chapter="sec-semana-lasallista" data-ch="sec-semana-lasallista" aria-label="Semana Lasallista, página 1 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="pg-title" data-rv>Semana Lasallista</h2>
+    <p class="pg-note" data-rv style="--d:1"><span>La gran familia lasallista</span><span>Desliza la foto o toca las miniaturas.</span></p>
+    <p class="pg-lead" data-rv style="--d:2">Una semana para celebrar lo que nos une: la cocina, el deporte, el ingenio y la fe de nuestra comunidad.</p>
+    <div class="pg-body" data-rv style="--d:3"><p>Hubo mesas con frutas y dulces, arreglos de flores, partidos en la cancha y un vestido hecho para desfilar. Al final, la procesión nos recordó el nombre que lleva nuestra casa.</p></div>
+    <div class="ch-stars" aria-hidden="true"><span class="pg-star" style="width:30px;height:30px;background:var(--mag-ultramar)"></span><span class="pg-star" style="width:18px;height:18px;background:var(--mag-coral)"></span><span class="pg-star" style="width:12px;height:12px;background:var(--mag-menta)"></span></div>
+    <p class="pg-num pg-num--l"></p>
+  </div></div>
+</section>
+
+<section class="pg pg--lavanda" id="sec-semana-lasallista-2" data-label="Semana Lasallista" data-ch="sec-semana-lasallista" aria-label="Semana Lasallista, página 2 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="sr">Semana Lasallista, página 2 de 2</h2>
+    <div class="vs" data-vs role="region" aria-roledescription="carousel" aria-label="Semana Lasallista" data-rv style="--d:1">
+      <div class="vs-view" tabindex="0" aria-label="Semana Lasallista: flechas arriba y abajo para cambiar de foto">
+        <div class="vs-track">
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="1 de 18"><img src="img/sec-semana-lasallista/sl-01.jpg" alt="Semana Lasallista, foto 1 de 18" width="1000" height="1500" loading="eager" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="2 de 18"><img src="img/sec-semana-lasallista/sl-02.jpg" alt="Semana Lasallista, foto 2 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="3 de 18"><img src="img/sec-semana-lasallista/sl-03.jpg" alt="Semana Lasallista, foto 3 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="4 de 18"><img src="img/sec-semana-lasallista/sl-04.jpg" alt="Semana Lasallista, foto 4 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="5 de 18"><img src="img/sec-semana-lasallista/sl-05.jpg" alt="Semana Lasallista, foto 5 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="6 de 18"><img src="img/sec-semana-lasallista/sl-06.jpg" alt="Semana Lasallista, foto 6 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="7 de 18"><img src="img/sec-semana-lasallista/sl-07.jpg" alt="Semana Lasallista, foto 7 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="8 de 18"><img src="img/sec-semana-lasallista/sl-08.jpg" alt="Semana Lasallista, foto 8 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="9 de 18"><img src="img/sec-semana-lasallista/sl-09.jpg" alt="Semana Lasallista, foto 9 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="10 de 18"><img src="img/sec-semana-lasallista/sl-10.jpg" alt="Semana Lasallista, foto 10 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="11 de 18"><img src="img/sec-semana-lasallista/sl-11.jpg" alt="Semana Lasallista, foto 11 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="12 de 18"><img src="img/sec-semana-lasallista/sl-12.jpg" alt="Semana Lasallista, foto 12 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="13 de 18"><img src="img/sec-semana-lasallista/sl-13.jpg" alt="Semana Lasallista, foto 13 de 18" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="14 de 18"><img src="img/sec-semana-lasallista/sl-14.jpg" alt="Semana Lasallista, foto 14 de 18" width="550" height="533" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="15 de 18"><img src="img/sec-semana-lasallista/sl-15.jpg" alt="Semana Lasallista, foto 15 de 18" width="481" height="401" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="16 de 18"><img src="img/sec-semana-lasallista/sl-16.jpg" alt="Semana Lasallista, foto 16 de 18" width="611" height="859" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="17 de 18"><img src="img/sec-semana-lasallista/sl-17.jpg" alt="Semana Lasallista, foto 17 de 18" width="870" height="516" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="18 de 18"><img src="img/sec-semana-lasallista/sl-18.jpg" alt="Semana Lasallista, foto 18 de 18" width="621" height="799" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <p class="vs-count" aria-hidden="true"></p>
+      </div>
+      <div class="vs-thumbs">
+        <div class="vs-thumbs-in">
+        <button type="button" class="vs-th" aria-label="Ver foto 1 de 18"><img src="img/sec-semana-lasallista/sl-01-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 2 de 18"><img src="img/sec-semana-lasallista/sl-02-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 3 de 18"><img src="img/sec-semana-lasallista/sl-03-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 4 de 18"><img src="img/sec-semana-lasallista/sl-04-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 5 de 18"><img src="img/sec-semana-lasallista/sl-05-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 6 de 18"><img src="img/sec-semana-lasallista/sl-06-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 7 de 18"><img src="img/sec-semana-lasallista/sl-07-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 8 de 18"><img src="img/sec-semana-lasallista/sl-08-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 9 de 18"><img src="img/sec-semana-lasallista/sl-09-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 10 de 18"><img src="img/sec-semana-lasallista/sl-10-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 11 de 18"><img src="img/sec-semana-lasallista/sl-11-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 12 de 18"><img src="img/sec-semana-lasallista/sl-12-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 13 de 18"><img src="img/sec-semana-lasallista/sl-13-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 14 de 18"><img src="img/sec-semana-lasallista/sl-14-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 15 de 18"><img src="img/sec-semana-lasallista/sl-15-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 16 de 18"><img src="img/sec-semana-lasallista/sl-16-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 17 de 18"><img src="img/sec-semana-lasallista/sl-17-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 18 de 18"><img src="img/sec-semana-lasallista/sl-18-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        </div>
+      </div>
+      <span class="sr" aria-live="polite"></span>
+    </div>
+    <p class="pg-num pg-num--r"></p>
+  </div></div>
+</section>
+<!-- END sec-semana-lasallista -->

@@ -1,0 +1,83 @@
+<!-- Comparsas (2 páginas) -->
+<style>
+  #sec-comparsas .vs, #sec-comparsas-2 .vs { position: relative; display: flex; gap: 8px; min-height: 0; height: var(--vs-h, auto); }
+  #sec-comparsas .vs--l, #sec-comparsas-2 .vs--l { flex-direction: row-reverse; }
+  #sec-comparsas .vs-view, #sec-comparsas-2 .vs-view { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--mag-radius-m); background: var(--ph-bg); touch-action: none; cursor: grab; -webkit-tap-highlight-color: transparent; }
+  #sec-comparsas .vs-view.drag, #sec-comparsas-2 .vs-view.drag { cursor: grabbing; }
+  #sec-comparsas .vs-view:focus-visible, #sec-comparsas-2 .vs-view:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-comparsas .vs-track, #sec-comparsas-2 .vs-track { position: absolute; inset: 0; transition: transform 520ms var(--mag-ease); will-change: transform; }
+  #sec-comparsas .vs-track.drag, #sec-comparsas-2 .vs-track.drag { transition: none; }
+  #sec-comparsas .vs-slide, #sec-comparsas-2 .vs-slide { position: relative; width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ph-bg); }
+  #sec-comparsas .vs-slide img, #sec-comparsas-2 .vs-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
+  #sec-comparsas .vs-slide video, #sec-comparsas-2 .vs-slide video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--mag-indigo); }
+  #sec-comparsas .vs-count, #sec-comparsas-2 .vs-count { position: absolute; z-index: 2; left: 10px; top: 10px; margin: 0; padding: 3px 10px; border-radius: var(--mag-radius-pill); background: color-mix(in srgb, var(--mag-indigo) 80%, transparent); color: var(--mag-luz); font-family: var(--mag-font-display); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; pointer-events: none; }
+  #sec-comparsas .vs-thumbs, #sec-comparsas-2 .vs-thumbs { flex: 0 0 var(--vs-tw, 60px); width: var(--vs-tw, 60px); position: relative; overflow: hidden; padding: 4px; touch-action: none; cursor: grab; }
+  #sec-comparsas .vs-thumbs.drag, #sec-comparsas-2 .vs-thumbs.drag { cursor: grabbing; }
+  #sec-comparsas .vs-thumbs-in, #sec-comparsas-2 .vs-thumbs-in { display: flex; flex-direction: column; gap: 6px; transition: transform 420ms var(--mag-ease); }
+  #sec-comparsas .vs-thumbs.drag .vs-thumbs-in, #sec-comparsas-2 .vs-thumbs.drag .vs-thumbs-in { transition: none; }
+  #sec-comparsas .vs-th, #sec-comparsas-2 .vs-th { position: relative; flex: none; width: 100%; aspect-ratio: 1 / 1; padding: 0; border: 0; border-radius: var(--mag-radius-s); overflow: hidden; background: var(--ph-bg); cursor: pointer; opacity: .62; transition: opacity var(--mag-dur) var(--mag-ease); }
+  #sec-comparsas .vs-th img, #sec-comparsas-2 .vs-th img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  #sec-comparsas .vs-th:hover, #sec-comparsas-2 .vs-th:hover { opacity: 1; }
+  #sec-comparsas .vs-th.on, #sec-comparsas-2 .vs-th.on { opacity: 1; }
+  #sec-comparsas .vs-th.on::after, #sec-comparsas-2 .vs-th.on::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--mag-indigo); border-radius: inherit; outline: 2px solid var(--mag-luz); outline-offset: -4px; pointer-events: none; }
+  #sec-comparsas .vs-th:focus-visible, #sec-comparsas-2 .vs-th:focus-visible { outline: 2px solid var(--mag-ultramar); outline-offset: 2px; }
+  #sec-comparsas .vs-pl, #sec-comparsas-2 .vs-pl { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; }
+  #sec-comparsas .vs-pl circle, #sec-comparsas-2 .vs-pl circle { fill: color-mix(in srgb, var(--mag-indigo) 80%, transparent); }
+  #sec-comparsas .vs-pl path, #sec-comparsas-2 .vs-pl path { fill: var(--mag-luz); }
+  @media (prefers-reduced-motion: reduce) { #sec-comparsas .vs-track, #sec-comparsas-2 .vs-track, #sec-comparsas .vs-thumbs-in, #sec-comparsas-2 .vs-thumbs-in, #sec-comparsas .vs-th, #sec-comparsas-2 .vs-th { transition: none; } }
+  #sec-comparsas .ch-band, #sec-comparsas-2 .ch-band { flex: none; height: 214px; margin: auto -32px -36px; overflow: hidden; background: var(--ph-bg); }
+  #sec-comparsas .ch-band img, #sec-comparsas-2 .ch-band img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; -webkit-user-drag: none; }
+  #sec-comparsas .ch-mid, #sec-comparsas-2 .ch-mid { justify-content: center; }
+  #sec-comparsas .vs, #sec-comparsas-2 .vs { --vs-h: 250px; --vs-tw: 56px; }
+</style>
+
+<section class="pg pg--coral" id="sec-comparsas" data-label="Comparsas" data-chapter="sec-comparsas" data-ch="sec-comparsas" aria-label="Comparsas, página 1 de 2">
+  <div class="pg__in"><div class="pg-pad" style="gap:14px">
+    <h2 class="pg-title" data-rv>Comparsas</h2>
+    <p class="pg-note" data-rv style="--d:1"><span>Camisetas negras y pañuelos de colores</span><span>Hay videos entre las fotos: toca el triángulo.</span></p>
+    <p class="pg-lead" data-rv style="--d:2">La promoción salió a bailar: pasos, banderas y mucho ritmo sobre el escenario del colegio.</p>
+    <div class="pg-body" data-rv style="--d:3"><p>Cuando un video suena, la música de la revista se pausa; al terminar, vuelve sola.</p></div>
+    <figure class="ch-band" data-rv style="--d:4"><img src="img/sec-comparsas/cp-06.jpg" alt="Comparsas" width="1500" height="844" decoding="async" draggable="false"></figure>
+    <p class="pg-num pg-num--l pg-num--luz"></p>
+  </div></div>
+</section>
+
+<section class="pg pg--coral" id="sec-comparsas-2" data-label="Comparsas" data-ch="sec-comparsas" aria-label="Comparsas, página 2 de 2">
+  <div class="pg__in"><div class="pg-pad ch-mid" style="gap:18px">
+    <h2 class="sr">Comparsas, página 2 de 2</h2>
+    <h2 class="pg-h2" data-rv>Ritmo sobre el escenario</h2>
+    <div class="vs" data-vs role="region" aria-roledescription="carousel" aria-label="Comparsas" data-rv style="--d:2">
+      <div class="vs-view" tabindex="0" aria-label="Comparsas: flechas arriba y abajo para cambiar de foto">
+        <div class="vs-track">
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="1 de 9"><img src="img/sec-comparsas/cp-01.jpg" alt="Comparsas, foto 1 de 9" width="1500" height="1000" loading="eager" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="2 de 9"><img src="img/sec-comparsas/cp-02.jpg" alt="Comparsas, foto 2 de 9" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="3 de 9"><video src="video/sec-comparsas/cp-v1.mp4" poster="img/sec-comparsas/cp-v1-p.jpg" controls controlslist="nodownload noplaybackrate" playsinline preload="none" width="960" height="540" aria-label="Comparsas, video 1 de 3"></video></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="4 de 9"><img src="img/sec-comparsas/cp-03.jpg" alt="Comparsas, foto 4 de 9" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="5 de 9"><img src="img/sec-comparsas/cp-04.jpg" alt="Comparsas, foto 5 de 9" width="1000" height="1500" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="6 de 9"><video src="video/sec-comparsas/cp-v2.mp4" poster="img/sec-comparsas/cp-v2-p.jpg" controls controlslist="nodownload noplaybackrate" playsinline preload="none" width="960" height="540" aria-label="Comparsas, video 2 de 3"></video></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="7 de 9"><img src="img/sec-comparsas/cp-05.jpg" alt="Comparsas, foto 7 de 9" width="1500" height="1000" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="8 de 9"><img src="img/sec-comparsas/cp-07.jpg" alt="Comparsas, foto 8 de 9" width="810" height="698" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="vs-slide" role="group" aria-roledescription="slide" aria-label="9 de 9"><video src="video/sec-comparsas/cp-v3.mp4" poster="img/sec-comparsas/cp-v3-p.jpg" controls controlslist="nodownload noplaybackrate" playsinline preload="none" width="960" height="540" aria-label="Comparsas, video 3 de 3"></video></div>
+        </div>
+        <p class="vs-count" aria-hidden="true"></p>
+      </div>
+      <div class="vs-thumbs">
+        <div class="vs-thumbs-in">
+        <button type="button" class="vs-th" aria-label="Ver foto 1 de 9"><img src="img/sec-comparsas/cp-01-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 2 de 9"><img src="img/sec-comparsas/cp-02-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver video 1 de 3"><img src="img/sec-comparsas/cp-v1-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"><svg class="vs-pl" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="M10 8l6 4-6 4z"/></svg></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 4 de 9"><img src="img/sec-comparsas/cp-03-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 5 de 9"><img src="img/sec-comparsas/cp-04-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver video 2 de 3"><img src="img/sec-comparsas/cp-v2-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"><svg class="vs-pl" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="M10 8l6 4-6 4z"/></svg></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 7 de 9"><img src="img/sec-comparsas/cp-05-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver foto 8 de 9"><img src="img/sec-comparsas/cp-07-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"></button>
+        <button type="button" class="vs-th" aria-label="Ver video 3 de 3"><img src="img/sec-comparsas/cp-v3-t.jpg" alt="" width="128" height="128" loading="lazy" decoding="async" draggable="false"><svg class="vs-pl" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="M10 8l6 4-6 4z"/></svg></button>
+        </div>
+      </div>
+      <span class="sr" aria-live="polite"></span>
+    </div>
+    <p class="pg-note" data-rv style="--d:3"><span>Pasos, banderas y pañuelos</span><span>Desliza la foto o toca las miniaturas.</span></p>
+    <p class="pg-num pg-num--r"></p>
+  </div></div>
+</section>
+<!-- END sec-comparsas -->
